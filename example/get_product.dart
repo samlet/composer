@@ -10,7 +10,22 @@ Future<void> main(List<String> arguments) async {
     ..mapObject(['productId', 'productName', productProductConfigs]);
 
   var prod = await disp.call((p0) => Product.fromJson(p0));
-  print("${prod?.productId}, ${prod?.productName}");
+  print("product ==> ${prod?.productId}, ${prod?.productName}");
+  var configOptNames = prod?.productProductConfigs?.values
+      ?.map((e) => e.configItemProductConfigItem?.configItemName)
+      // ?.map((e) => e.configItemProductConfigItem!)
+      .toList();
+  print("available selections: $configOptNames");
+
+  var configOpts = prod?.productProductConfigs?.values
+      ?.map((e) => e.configItemProductConfigItem)
+      .toList();
+  configOpts?.forEach((element) {
+    print("${element?.configItemName} - ${element?.description}");
+    var optVals = element?.configItemProductConfigProducts?.values
+        ?.map((e) => "${e.productId} (${e.quantity?.decimal})").toList();
+    print("\tto select: $optVals");
+  });
 
   exit(0);
 }
