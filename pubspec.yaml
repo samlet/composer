@@ -7,6 +7,7 @@ environment:
   sdk: '>=2.17.0 <3.0.0'
 
 dependencies:
+  logging: ^1.0.2
   path: ^1.8.0
   #  quartet: ^0.1.1
   recase: ^4.0.0
@@ -16,6 +17,7 @@ dependencies:
     path: ../bluecc_srv
   hubs_data:
     path: ../hubs_data
+  mqtt_client: ^9.6.8
 
 
 dev_dependencies:
